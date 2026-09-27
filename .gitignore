@@ -1,0 +1,25 @@
+# Certificados digitales
+*.p12
+*.pfx
+*.pem
+*.key
+
+# Contraseñas / configuración privada
+.env
+
+# Tokens Microsoft
+msal_token_cache.bin
+
+# Configuración local del certificado
+certificado_firma.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos temporales
+*.tmp

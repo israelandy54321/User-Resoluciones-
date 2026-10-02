@@ -83,7 +83,7 @@
 
 # GOOGLE_SHEETS_URL = (
 #     "https://script.google.com/macros/s/"
-#     "AKfycbxRbFRZaTKq2r1ZYvhVxsd9UTSEtxyUMR214NWW4TII2vf8I9dmUMx0UK08-e7BseFQ7w"
+#     "AKfycbxFpmWA67uy2Mq_bR5v108mLFAtsje00MrN40IYifrxsqlDhn9Tffi6GvgLNdhkEgfM5A"
 #     "/exec"
 # )
 

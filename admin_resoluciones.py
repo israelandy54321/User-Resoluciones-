@@ -83,7 +83,7 @@ from PySide6.QtWidgets import (
 
 GOOGLE_SHEETS_URL = (
     "https://script.google.com/macros/s/"
-    "AKfycby4Hlol32oaljLE32JHr93Ov3dfeEqnk49E7vFY6_Zly3nE1JvGk0PRV79il9pMSdsUpA"
+    "AKfycbzjphcwy8Dpyc_OoSG3geYjpyrGtKDJY-FpaPyf7lVJm7rZ7XDAy2zzfcc_oup70G7s"
     "/exec"
 )
 

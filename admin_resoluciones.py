@@ -167,18 +167,34 @@ CORREO_DESTINO_PRUEBAS = "aiy.delacruz@yavirac.edu.ec"
 
 CORREO_REMITENTE_OUTLOOK = "gestion.movilidad@outlook.com"
 
-ASUNTO_CORREO = "Documentación AMT - {nombre}"
+ASUNTO_CORREO = "AGENCIA METROPOLITANA DE TRANSITO-{fecha}-CAMBIO DE SERVICIO DE PARTICULAR A- {placa} "
 
-CUERPO_CORREO = """Estimado/a {nombre}:
+CUERPO_CORREO = """<strong>Señores</strong><br>
 
-Por medio del presente se remite el formato de verificación documental correspondiente,
-la cual deberá ser completada con la información solicitada.
+<strong>AGENCIA NACIONAL DE TRÁNSITO</strong><br>
 
-Una vez completada, por favor remitirla por el medio indicado.
+<strong>De mi consideración:</strong> <br>
+Por medio de la presente, y en atención al <strong>Oficio Nro. ANT-ANT-2026-0282-OF</strong>, mediante el cual se establecen las directrices para la gestión de solicitudes de ajuste de tasas, me permito remitir la siguiente solicitud:
 
-Saludos cordiales,
-Administrador
-Sistema de Resoluciones AMT
+<ul>
+<li>Cambio de servicio de particular a público.</li>
+</ul>
+
+Para sustentar la presente solicitud, se adjunta la siguiente documentación:
+
+<ul>
+<li>Formulario de solicitud de ajuste de tasas.</li>
+<li>Resolución correspondiente.</li>
+<li>Copia de la matrícula del vehículo.</li>
+</ul>
+
+Sin otro particular, agradezco la atención brindada a la presente y quedo atento(a) a cualquier información adicional que sea requerida para la continuidad del trámite.
+
+Atentamente, <br>
+
+Mgs. PAÚL GUERRERO
+<br>
+SUPERVISOR DEL CENTRO DE MATRICULACIÓN BICENTENARIO
 """
 
 
@@ -458,7 +474,9 @@ def enviar_correo_graph(
     archivo_adjunto,
     pdf_bytes=None,
     pdf_nombre=None,
-    destinatario=None
+    destinatario=None,
+    placa="",
+    fecha=""
 ):
 
     if not os.path.isfile(archivo_adjunto):
@@ -534,13 +552,15 @@ def enviar_correo_graph(
 
             "subject":
                 ASUNTO_CORREO.format(
-                    nombre=nombre
+                    nombre=nombre,
+                    placa=placa,
+                    fecha=fecha
                 ),
 
             "body": {
 
                 "contentType":
-                    "Text",
+                    "HTML",
 
                 "content":
                     CUERPO_CORREO.format(
@@ -2865,7 +2885,16 @@ class EmailWorker(QRunnable):
                             pdf_bytes,
 
                         pdf_nombre=
-                            f"Resolucion_{placa}.pdf"
+                            f"Resolucion_{placa}.pdf",
+
+                        placa=placa,
+
+                        fecha=str(
+                            registro.get(
+                                "fecha",
+                                ""
+                            )
+                        ).strip()
                     )
 
                     # Solo después de que Microsoft Graph acepta el correo,
